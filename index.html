@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="./jquery/jquery-3.3.1.min.js"></script>
+<body>
+知识点总结以及踩坑事件
+1.ams的礼包和道聚城的礼包任何修改之后都要先发布测试环境;
+2.ams中在查询积分的时候结果判断最好不要填写php算式,最好利用映射的方法对值进行比较判断,否则会有一些算式无法计算成功;
+3.ams的活动主要就是抽奖和领取礼包;
+4.查询个人领取记录的样式利用的是smarty模板的方式;只要确定模板容器,样式用cp端提供的即可;(获奖记录是同样的道理)
+5.jq的attr()方法和addClass()以及removeClass()的方法的使用;addClass()可以在不删除原来的class属性下追加新的属性值.
+6.setTimeout('执行方法','延迟时间');
+7.常用的时间对比方法,获取当前时间戳Date.parse(Date()),获取指定时间戳Date.parse('2019-01-23 00:00:00');
+8.周任务的初始时间写法,开始:date('Ymd', (time() - ((date('w') == 0 ? 7 : date('w')) - 1) * 24 * 3600)); 结束:date('Ymd',time());
+9.PHP中的向下取整是:floor();在js中的向下取整为:Math.floor();
+10.JS中的循环一般是for(var i= 1;i<=arr.length; i++){执行语句};PHP中用的比较多的是foreach($arr as $k=>$v){执行语句};
+11.js中变量与字符串的链接是用'+'加号;而在PHP中链接变量和字符串用'.'点;
+12.JS中给某一class增加display样式的时候可以用$('.ClassName').css('display':'none');
+13.资格的自定义添加中一般是用iUin或者openId或者RoleId与其他有标志性的变量拼接而成;
+14.js中判断某变量是否存在于数组中的方法:in_array();
+<script>
+    function in_array(stringToSearch, arrayToSearch) {
+        var thisEntry = '';
+        for (var s = 0; s < arrayToSearch.length; s++) {
+            thisEntry                = arrayToSearch[s].toString();
+            if (thisEntry == stringToSearch) {
+                return true;
+            }
+        }
+        return false;
+    }
+</script>
+15.天刀的PC端分享活动可以参考https://wuxia.qq.com/cp/a20190103live/index.htm这个活动来做.以及消息定点提醒.
+16.ams在发出请求的时候,有时候会出现请求出现缓存现象.需要在js中添加'_everyRead':true,同时在查询个人获奖记录的时候也是有一个缓存的问题加上'isForce' : true,这样显示每次都会请求后台.
+17.JS中在写if判断句的时候注意格式if(1){return;}else{alert(2)};
+18.JS中命名数组最正规的方法是：var Data = new array();
+19.break只能写在循环里面，才是符合js的语法严谨；跳出本循环，执行循环外的语句；berak的语境是在循环和switch中。
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
